@@ -11,9 +11,11 @@ import java.time.LocalDateTime;
 @Getter
 public class ConservationEventRequestDTO {
     @NotBlank(message = "Name cannot be blank")
+    @Size(max = 25)
     private String name;
 
     @NotBlank(message = "Description cannot be blank")
+    @Size(max = 100)
     private String description;
 
     @NotNull(message = "Start date and time is required")
