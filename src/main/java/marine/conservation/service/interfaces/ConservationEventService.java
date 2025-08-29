@@ -1,8 +1,8 @@
 package marine.conservation.service.interfaces;
 
-import marine.conservation.dto.ConservationEventRequestDTO;
-import marine.conservation.dto.ConservationEventResponseDTO;
-import marine.conservation.dto.ConservationEventUpdateDTO;
+import marine.conservation.dto.ConservationEvent.ConservationEventRequestDTO;
+import marine.conservation.dto.ConservationEvent.ConservationEventResponseDTO;
+import marine.conservation.dto.ConservationEvent.ConservationEventUpdateDTO;
 
 import java.util.List;
 

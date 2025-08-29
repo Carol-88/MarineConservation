@@ -1,4 +1,4 @@
-package marine.conservation.dto;
+package marine.conservation.dto.ConservationEvent;
 
 import jakarta.validation.constraints.*;
 import lombok.Data;

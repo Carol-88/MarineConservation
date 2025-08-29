@@ -1,4 +1,4 @@
-package marine.conservation.dto;
+package marine.conservation.dto.ConservationEvent;
 
 import lombok.Builder;
 import lombok.Data;
