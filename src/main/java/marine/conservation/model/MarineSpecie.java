@@ -32,3 +32,5 @@ public class MarineSpecie {
     @JoinColumn(name = "project_id")
     private List<ConservationProject> project = new ArrayList<>();
 }
+
+
