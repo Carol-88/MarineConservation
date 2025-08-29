@@ -1,4 +1,4 @@
-package marine.conservation.dto;
+package marine.conservation.dto.marineSpecie;
 
 import lombok.*;
 
@@ -6,7 +6,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MarineSpeciesRequestDTO {
+public class MarineSpecieResponseDTO {
+    private Long id;
     private String commonName;
     private String scientificName;
     private String conservationStatus;

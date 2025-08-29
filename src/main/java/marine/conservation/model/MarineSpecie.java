@@ -2,6 +2,10 @@ package marine.conservation.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import marine.conservation.enums.ConservationStatus;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "marine_species")
@@ -9,7 +13,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MarineSpecies {
+public class MarineSpecie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +26,9 @@ public class MarineSpecies {
     private String scientificName;
 
     @Column(nullable = false)
-    private String conservationStatus;
+    private ConservationStatus conservationStatus;
 
-    @ManyToOne
+    @OneToMany(mappedBy = "specie", cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "project_id")
-    private ConservationProject project;
+    private List<ConservationProject> project = new ArrayList<>();
 }

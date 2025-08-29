@@ -1,67 +1,53 @@
 package marine.conservation.service.impl;
 
-import marine.conservation.dto.MarineSpeciesRequestDTO;
-import marine.conservation.dto.MarineSpeciesResponseDTO;
-import marine.conservation.model.ConservationProject.*;
+import marine.conservation.dto.marineSpecie.MarineSpecieRequestDTO;
+import marine.conservation.dto.marineSpecie.MarineSpecieResponseDTO;
 
-import marine.conservation.model.MarineSpecies;
-import marine.conservation.repository.MarineSpeciesRepository;
-import marine.conservation.service.interfaces.MarineSpeciesService;
+import marine.conservation.model.ConservationProject;
+import marine.conservation.model.MarineSpecie;
+import marine.conservation.repository.MarineSpecieRepository;
+import marine.conservation.service.interfaces.MarineSpecieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class MarineSpeciesImpl implements MarineSpeciesService {
+public class MarineSpecieImpl implements MarineSpecieService {
 
     @Autowired
-    private MarineSpeciesRepository speciesRepository;
+    private MarineSpecieRepository speciesRepository;
 
     @Autowired
     private ConservationProjectRepository projectRepository;
 
     @Override
-    public MarineSpeciesResponseDTO create(MarineSpeciesRequestDTO dto) {
-        MarineSpecies species = MarineSpecies.builder()
+    public MarineSpecieResponseDTO create(MarineSpecieRequestDTO dto) {
+        MarineSpecie species = MarineSpecie.builder()
                 .commonName(dto.getCommonName())
                 .scientificName(dto.getScientificName())
                 .conservationStatus(dto.getConservationStatus())
                 .project(getProject(dto.getProjectId()))
                 .build();
 
-        return toResponseDTO(speciesRepository.save(species));
+        return mapToResponseDTO(speciesRepository.save(species));
     }
 
     @Override
-    public List<MarineSpeciesResponseDTO> findAll() {
+    public List<MarineSpecieResponseDTO> findAll() {
         return speciesRepository.findAll().stream()
-                .map(this::toResponseDTO)
+                .map(this::mapToResponseDTO)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public MarineSpeciesResponseDTO findById(Long id) {
+    public MarineSpecieResponseDTO findById(Long id) {
         return speciesRepository.findById(id)
-                .map(this::toResponseDTO)
+                .map(this::mapToResponseDTO)
                 .orElseThrow(() -> new ResourceNotFoundException("Marine species not found with ID: " + id));
     }
 
-
-    @Override
-    public MarineSpeciesResponseDTO update(Long id, MarineSpeciesRequestDTO dto) {
-        MarineSpecies species = speciesRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Marine species not found with ID: " + id));
-
-        species.setCommonName(dto.getCommonName());
-        species.setScientificName(dto.getScientificName());
-        species.setConservationStatus(dto.getConservationStatus());
-        species.setProject(getProject(dto.getProjectId()));
-
-        return toResponseDTO(speciesRepository.save(species));
-    }
 
     @Override
     public void delete(Long id) {
@@ -72,8 +58,8 @@ public class MarineSpeciesImpl implements MarineSpeciesService {
     }
 
     // Helper: Convert Entity to Response DTO
-    private MarineSpeciesResponseDTO toResponseDTO(MarineSpecies species) {
-        return MarineSpeciesResponseDTO.builder()
+    private MarineSpecieResponseDTO mapToResponseDTO(MarineSpecie species) {
+        return MarineSpecieResponseDTO.builder()
                 .id(species.getId())
                 .commonName(species.getCommonName())
                 .scientificName(species.getScientificName())
