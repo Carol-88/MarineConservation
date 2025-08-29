@@ -11,9 +11,11 @@ import java.time.LocalDateTime;
 @Getter
 public class ConservationEventUpdateDTO {
     @NotBlank(message = "Name cannot be blank")
+    @Size(max = 25)
     private String name;
 
     @NotBlank(message = "Description cannot be blank")
+    @Size(max = 100)
     private String description;
 
     @FutureOrPresent(message = "Start date must be present or in the future")
