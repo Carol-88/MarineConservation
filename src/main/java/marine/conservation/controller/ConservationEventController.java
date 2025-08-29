@@ -43,10 +43,19 @@ public class ConservationEventController {
 
     // ------------------- Update -------------------
     @PutMapping("/{id}")
-    public ResponseEntity<ConservationEventResponseDTO> updateEvent(
+    public ResponseEntity<ConservationEventResponseDTO> updateEventPut(
             @PathVariable Long id,
             @Valid @RequestBody ConservationEventUpdateDTO updateDTO) {
-        ConservationEventResponseDTO response = eventService.updateEvent(id, updateDTO);
+        ConservationEventResponseDTO response = eventService.updateEventPut(id, updateDTO);
+        return ResponseEntity.ok(response);
+    }
+
+    // ------------------- Patch Update -------------------
+    @PatchMapping("/{id}")
+    public ResponseEntity<ConservationEventResponseDTO> patchEventPatch(
+            @PathVariable Long id,
+            @RequestBody ConservationEventUpdateDTO updateDTO) {
+        ConservationEventResponseDTO response = eventService.updateEventPatch(id, updateDTO);
         return ResponseEntity.ok(response);
     }
 

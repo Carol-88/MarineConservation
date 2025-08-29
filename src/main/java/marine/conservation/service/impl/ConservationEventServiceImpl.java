@@ -1,22 +1,22 @@
 package marine.conservation.service.impl;
 
-import lombok.RequiredArgsConstructor;
 import marine.conservation.dto.ConservationEventRequestDTO;
 import marine.conservation.dto.ConservationEventResponseDTO;
 import marine.conservation.dto.ConservationEventUpdateDTO;
 import marine.conservation.model.ConservationEvent;
 import marine.conservation.repository.ConservationEventRepository;
 import marine.conservation.service.interfaces.ConservationEventService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 public class ConservationEventServiceImpl implements ConservationEventService {
 
-    private final ConservationEventRepository eventRepository;
+    @Autowired
+    ConservationEventRepository eventRepository;
 
     @Override
     public ConservationEventResponseDTO createEvent(ConservationEventRequestDTO requestDTO) {
@@ -48,7 +48,23 @@ public class ConservationEventServiceImpl implements ConservationEventService {
     }
 
     @Override
-    public ConservationEventResponseDTO updateEvent(Long id, ConservationEventUpdateDTO updateDTO) {
+    public ConservationEventResponseDTO updateEventPut(Long id, ConservationEventUpdateDTO updateDTO) {
+        ConservationEvent event = eventRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Event not found with id: " + id));
+
+        event.setName(updateDTO.getName());
+        event.setDescription(updateDTO.getDescription());
+        event.setStartDateTime(updateDTO.getStartDateTime());
+        event.setEndDateTime(updateDTO.getEndDateTime());
+        event.setLocation(updateDTO.getLocation());
+        event.setMaxVolunteers(updateDTO.getMaxVolunteers());
+
+        ConservationEvent updated = eventRepository.save(event);
+        return mapToResponseDTO(updated);
+    }
+
+    @Override
+    public ConservationEventResponseDTO updateEventPatch(Long id, ConservationEventUpdateDTO updateDTO) {
         ConservationEvent event = eventRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Event not found with id: " + id));
 

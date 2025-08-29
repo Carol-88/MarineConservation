@@ -14,7 +14,9 @@ public interface ConservationEventService {
 
     List<ConservationEventResponseDTO> getAllEvents();
 
-    ConservationEventResponseDTO updateEvent(Long id, ConservationEventUpdateDTO updateDTO);
+    ConservationEventResponseDTO updateEventPut(Long id, ConservationEventUpdateDTO updateDTO);
+
+    ConservationEventResponseDTO updateEventPatch(Long id, ConservationEventUpdateDTO updateDTO);
 
     void deleteEvent(Long id);
 }
