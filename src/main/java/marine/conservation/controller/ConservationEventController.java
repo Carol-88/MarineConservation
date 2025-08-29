@@ -2,9 +2,9 @@ package marine.conservation.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import marine.conservation.dto.ConservationEventRequestDTO;
-import marine.conservation.dto.ConservationEventResponseDTO;
-import marine.conservation.dto.ConservationEventUpdateDTO;
+import marine.conservation.dto.ConservationEvent.ConservationEventRequestDTO;
+import marine.conservation.dto.ConservationEvent.ConservationEventResponseDTO;
+import marine.conservation.dto.ConservationEvent.ConservationEventUpdateDTO;
 import marine.conservation.service.interfaces.ConservationEventService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

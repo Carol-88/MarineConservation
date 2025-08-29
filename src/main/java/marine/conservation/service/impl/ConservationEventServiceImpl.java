@@ -1,8 +1,8 @@
 package marine.conservation.service.impl;
 
-import marine.conservation.dto.ConservationEventRequestDTO;
-import marine.conservation.dto.ConservationEventResponseDTO;
-import marine.conservation.dto.ConservationEventUpdateDTO;
+import marine.conservation.dto.ConservationEvent.ConservationEventRequestDTO;
+import marine.conservation.dto.ConservationEvent.ConservationEventResponseDTO;
+import marine.conservation.dto.ConservationEvent.ConservationEventUpdateDTO;
 import marine.conservation.model.ConservationEvent;
 import marine.conservation.repository.ConservationEventRepository;
 import marine.conservation.service.interfaces.ConservationEventService;
