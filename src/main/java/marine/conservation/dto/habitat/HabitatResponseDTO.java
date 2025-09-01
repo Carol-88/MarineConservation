@@ -1,6 +1,8 @@
 package marine.conservation.dto.habitat;
 
 import lombok.*;
+import marine.conservation.model.Location;
+import marine.conservation.model.MarineSpecie;
 
 import java.util.List;
 

@@ -3,7 +3,7 @@ package marine.conservation.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import javax.xml.stream.Location;
+import marine.conservation.model.Location;
 
 @Entity
 @Table(name = "habitats")
@@ -24,7 +24,7 @@ public class Habitat {
     private String description;
 
     @Embedded
-    private Location location; // embedded lat/long per spec
+    private Location location;
 
     // Many-to-One relationship with Specie
     @ManyToOne
