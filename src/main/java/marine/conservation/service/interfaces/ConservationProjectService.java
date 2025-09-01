@@ -13,6 +13,6 @@ public interface ConservationProjectService {
     List<ConservationProjectResponseDTO> getAllProjects();
     ConservationProjectResponseDTO getProjectById(Long id);
     ConservationProjectResponseDTO updateProjectPut(Long id, ConservationProjectUpdateDTO projectPutDTO);
-    ConservationProjectResponseDTO updateProjectPatch(Long id, ConservationProjectUpdateDTO projectPutDTO);
+    ConservationProjectResponseDTO updateProjectPatch(Long id, ConservationProjectUpdateDTO projectPatchDTO);
     void deleteProject(Long id);
 }
