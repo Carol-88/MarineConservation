@@ -28,9 +28,9 @@ public class MarineSpecie {
     @Column(nullable = false)
     private ConservationStatus conservationStatus;
 
-    @OneToMany(mappedBy = "specie", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne
     @JoinColumn(name = "project_id")
-    private List<ConservationProject> project = new ArrayList<>();
+    private ConservationProject project;
 }
 
 

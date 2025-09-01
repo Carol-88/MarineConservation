@@ -5,6 +5,7 @@ import marine.conservation.dto.marineSpecie.MarineSpecieResponseDTO;
 
 import marine.conservation.model.ConservationProject;
 import marine.conservation.model.MarineSpecie;
+import marine.conservation.repository.ConservationProjectRepository;
 import marine.conservation.repository.MarineSpecieRepository;
 import marine.conservation.service.interfaces.MarineSpecieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,6 @@ public class MarineSpecieImpl implements MarineSpecieService {
                 .commonName(dto.getCommonName())
                 .scientificName(dto.getScientificName())
                 .conservationStatus(dto.getConservationStatus())
-                .project(getProject(dto.getProjectId()))
                 .build();
 
         return mapToResponseDTO(speciesRepository.save(species));
@@ -63,11 +63,11 @@ public class MarineSpecieImpl implements MarineSpecieService {
                 .id(species.getId())
                 .commonName(species.getCommonName())
                 .scientificName(species.getScientificName())
-                .conservationStatus(species.getConservationStatus())
+                .conservationStatus(species.getConservationStatus().name()) // ✅ convert enum -> String
                 .projectId(species.getProject() != null ? species.getProject().getId() : null)
-                .projectName(species.getProject() != null ? species.getProject().getNombre() : null)
                 .build();
     }
+
 
     // Helper: Validate + fetch project
     private ConservationProject getProject(Long projectId) {
