@@ -85,8 +85,6 @@ Licensed under the Apache License, Version 2.0.[^9][^8]
 
 ***
 
-This README provides a clear introduction, setup instructions, and structural overview for maintainers and contributors.[^6][^7][^10][^8][^9][^1][^4][^5][^2][^3]
-
 <div style="text-align: center">⁂</div>
 
 [^1]: pom.xml
