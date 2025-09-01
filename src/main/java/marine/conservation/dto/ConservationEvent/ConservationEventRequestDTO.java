@@ -1,6 +1,8 @@
 package marine.conservation.dto.ConservationEvent;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import marine.conservation.model.Location;
@@ -9,6 +11,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Getter
+@Builder
 public class ConservationEventRequestDTO {
     @NotBlank(message = "Name cannot be blank")
     @Size(max = 25)
@@ -27,6 +30,7 @@ public class ConservationEventRequestDTO {
     private LocalDateTime endDateTime;
 
     @NotNull(message = "Location is required")
+    @Valid
     private Location location;
 
     @Positive(message = "Maximum number of volunteers must be greater than 0")
