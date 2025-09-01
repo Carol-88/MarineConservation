@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import marine.conservation.enums.Location;
 
 import java.time.LocalDateTime;
 
@@ -32,8 +31,7 @@ public class ConservationEvent {
     @Column(nullable = false)
     private LocalDateTime endDateTime;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Embedded
     private Location location;
 
     @Column(nullable = false)

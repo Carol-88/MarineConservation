@@ -3,7 +3,7 @@ package marine.conservation.dto.ConservationEvent;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
-import marine.conservation.enums.Location;
+import marine.conservation.model.Location;
 
 import java.time.LocalDateTime;
 
