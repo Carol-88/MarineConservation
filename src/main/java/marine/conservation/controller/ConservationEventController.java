@@ -36,7 +36,7 @@ public class ConservationEventController {
 
     // ------------------- Read One -------------------
     @GetMapping("/{id}")
-    public ResponseEntity<ConservationEventResponseDTO> getEventById(@PathVariable Long id) {
+    public ResponseEntity<ConservationEventResponseDTO> getEventById(@PathVariable(name = "id") Long id) {
         ConservationEventResponseDTO response = eventService.getEventById(id);
         return ResponseEntity.ok(response);
     }
@@ -44,7 +44,7 @@ public class ConservationEventController {
     // ------------------- Update -------------------
     @PutMapping("/{id}")
     public ResponseEntity<ConservationEventResponseDTO> updateEventPut(
-            @PathVariable Long id,
+            @PathVariable(name = "id") Long id,
             @Valid @RequestBody ConservationEventUpdateDTO updateDTO) {
         ConservationEventResponseDTO response = eventService.updateEventPut(id, updateDTO);
         return ResponseEntity.ok(response);
@@ -53,7 +53,7 @@ public class ConservationEventController {
     // ------------------- Patch Update -------------------
     @PatchMapping("/{id}")
     public ResponseEntity<ConservationEventResponseDTO> patchEventPatch(
-            @PathVariable Long id,
+            @PathVariable(name = "id") Long id,
             @RequestBody ConservationEventUpdateDTO updateDTO) {
         ConservationEventResponseDTO response = eventService.updateEventPatch(id, updateDTO);
         return ResponseEntity.ok(response);
@@ -61,7 +61,7 @@ public class ConservationEventController {
 
     // ------------------- Delete -------------------
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteEvent(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteEvent(@PathVariable(name = "id") Long id) {
         eventService.deleteEvent(id);
         return ResponseEntity.noContent().build();
     }

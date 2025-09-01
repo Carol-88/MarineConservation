@@ -2,15 +2,15 @@ package marine.conservation.dto.ConservationEvent;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
+import lombok.*;
 import marine.conservation.model.Location;
 
 import java.time.LocalDateTime;
 
 @Data
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class ConservationEventRequestDTO {
     @NotBlank(message = "Name cannot be blank")

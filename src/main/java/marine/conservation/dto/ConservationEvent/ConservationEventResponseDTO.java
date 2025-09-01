@@ -1,14 +1,14 @@
 package marine.conservation.dto.ConservationEvent;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
+import lombok.*;
 import marine.conservation.model.Location;
 
 import java.time.LocalDateTime;
 
 @Data
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class ConservationEventResponseDTO {
     private Long id;
