@@ -16,7 +16,7 @@ Marine Conservation is a web-based system designed to manage data on conservatio
 ### Prerequisites
 
 - **Java 17** or newer.
-- **MySQL Server** running locally on port 3306.
+- **MySQL Server** running locally on your port.
 - **Maven** (wrapper scripts provided: `mvnw` for Unix, `mvnw.cmd` for Windows).[^8][^9]
 
 
@@ -25,9 +25,9 @@ Marine Conservation is a web-based system designed to manage data on conservatio
 Update your MySQL server with the following credentials or change them in `src/main/resources/application.properties`:
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/marine-conservation?createDatabaseIfNotExist=true 
-spring.datasource.username=root
-spring.datasource.password=ironhack
+spring.datasource.url=jdbc:mysql://localhost:yourPORT/marine-conservation?createDatabaseIfNotExist=true 
+spring.datasource.username=yourDBuser
+spring.datasource.password=yourDBpass
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.hibernate.ddl-auto=create-drop
 spring.jpa.show-sql=true
