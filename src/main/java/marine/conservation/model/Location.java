@@ -2,6 +2,7 @@ package marine.conservation.model;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
+@Builder
 public class Location {
 
     private String type;      // Ejemplo: BEACH, HARBOR, OCEAN
@@ -16,4 +18,3 @@ public class Location {
     private Double latitude;  // Coordenada
     private Double longitude; // Coordenada
 }
-
