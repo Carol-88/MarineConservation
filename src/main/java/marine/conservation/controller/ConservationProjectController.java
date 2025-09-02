@@ -14,7 +14,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/projects")
 @RequiredArgsConstructor
-public class ConservationProjectController {
+public class
+ConservationProjectController {
 
     private final ConservationProjectService projectService;
 
