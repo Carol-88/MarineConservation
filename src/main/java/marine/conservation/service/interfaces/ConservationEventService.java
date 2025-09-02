@@ -1,5 +1,6 @@
 package marine.conservation.service.interfaces;
 
+import jakarta.validation.Valid;
 import marine.conservation.dto.ConservationEvent.ConservationEventRequestDTO;
 import marine.conservation.dto.ConservationEvent.ConservationEventResponseDTO;
 import marine.conservation.dto.ConservationEvent.ConservationEventUpdateDTO;
@@ -8,7 +9,7 @@ import java.util.List;
 
 public interface ConservationEventService {
 
-    ConservationEventResponseDTO createEvent(ConservationEventRequestDTO requestDTO);
+    ConservationEventResponseDTO createEvent(@Valid ConservationEventRequestDTO requestDTO);
 
     ConservationEventResponseDTO getEventById(Long id);
 

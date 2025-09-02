@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "conservation_events")
@@ -40,4 +42,12 @@ public class ConservationEvent {
     @ManyToOne
     @JoinColumn(name = "project_id", nullable = false)
     private ConservationProject project;
+
+    @ManyToMany
+    @JoinTable(
+            name = "event_volunteer",
+            joinColumns = @JoinColumn(name = "event_id"),
+            inverseJoinColumns = @JoinColumn(name = "volunteer_id")
+    )
+    private Set<Volunteer> volunteers = new HashSet<>();
 }
