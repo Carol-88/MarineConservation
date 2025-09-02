@@ -1,5 +1,6 @@
 package marine.conservation.service.interfaces;
 
+import jakarta.validation.Valid;
 import marine.conservation.dto.ConservationEvent.ConservationEventRequestDTO;
 import marine.conservation.dto.ConservationEvent.ConservationEventResponseDTO;
 import marine.conservation.dto.ConservationEvent.ConservationEventUpdateDTO;
