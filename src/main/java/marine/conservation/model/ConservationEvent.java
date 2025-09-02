@@ -1,10 +1,7 @@
 package marine.conservation.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -43,11 +40,14 @@ public class ConservationEvent {
     @JoinColumn(name = "project_id", nullable = false)
     private ConservationProject project;
 
+    @Builder.Default
     @ManyToMany
     @JoinTable(
             name = "event_volunteer",
             joinColumns = @JoinColumn(name = "event_id"),
             inverseJoinColumns = @JoinColumn(name = "volunteer_id")
     )
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<Volunteer> volunteers = new HashSet<>();
 }

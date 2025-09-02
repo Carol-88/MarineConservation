@@ -3,8 +3,6 @@ package marine.conservation.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import marine.conservation.model.Location;
-
 @Entity
 @Table(name = "habitats")
 @Data
@@ -26,8 +24,7 @@ public class Habitat {
     @Embedded
     private Location location;
 
-    // Many-to-One relationship with Specie
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "specie_id", nullable = false)
     private MarineSpecie marineSpecies;
 }

@@ -26,83 +26,214 @@ public class DataInitializer implements CommandLineRunner {
     @Transactional
     public void run(String... args) {
 
-        // 1. Create Conservation Project
-        ConservationProject project = ConservationProject.builder()
-                .name("Mediterranean Turtle Rescue")
-                .description("A long-term initiative to protect endangered turtle species across the Mediterranean Sea.")
-                .initDate(LocalDate.of(2025, 7, 1))
-                .finalDate(LocalDate.of(2028, 12, 31))
-                .build();
-        projectRepository.save(project);
+        LocalDate today = LocalDate.now();
 
-        // 2. Create Marine Species
-        MarineSpecie species1 = MarineSpecie.builder()
+        // ------------------------
+        // 1. Crear proyectos
+        // ------------------------
+        ConservationProject project1 = ConservationProject.builder()
+                .name("Mediterranean Turtle Rescue")
+                .description("Protección de tortugas en el Mediterráneo.")
+                .initDate(today.plusDays(1))
+                .finalDate(today.plusYears(3))
+                .build();
+
+        ConservationProject project2 = ConservationProject.builder()
+                .name("Coral Reef Conservation")
+                .description("Protección de arrecifes de coral en el Caribe.")
+                .initDate(today.plusDays(2))
+                .finalDate(today.plusYears(2))
+                .build();
+
+        ConservationProject project3 = ConservationProject.builder()
+                .name("Dolphin Monitoring Program")
+                .description("Seguimiento de delfines en el Atlántico.")
+                .initDate(today.plusDays(3))
+                .finalDate(today.plusYears(4))
+                .build();
+
+        projectRepository.saveAll(List.of(project1, project2, project3));
+
+        // ------------------------
+        // 2. Crear especies
+        // ------------------------
+        MarineSpecie turtle = MarineSpecie.builder()
                 .commonName("Loggerhead Turtle")
                 .scientificName("Caretta caretta")
                 .conservationStatus(ConservationStatus.ENDANGERED)
-                .project(project)
+                .project(project1)
                 .build();
 
-        MarineSpecie species2 = MarineSpecie.builder()
-                .commonName("Bluefin Tuna")
-                .scientificName("Thunnus thynnus")
-                .conservationStatus(ConservationStatus.VULNERABLE)
-                .project(project)
-                .build();
-
-        MarineSpecie species3 = MarineSpecie.builder()
-                .commonName("Dolphin")
-                .scientificName("Delphinus delphis")
-                .conservationStatus(ConservationStatus.PROTECTED)
-                .project(project)
-                .build();
-
-        MarineSpecie species4 = MarineSpecie.builder()
-                .commonName("Coral")
+        MarineSpecie coral = MarineSpecie.builder()
+                .commonName("Red Coral")
                 .scientificName("Corallium rubrum")
                 .conservationStatus(ConservationStatus.THREATENED)
-                .project(project)
+                .project(project2)
                 .build();
 
-        speciesRepository.saveAll(List.of(
-                species1,
-                species2,
-                species3,
-                species4
-                ));
+        MarineSpecie dolphin = MarineSpecie.builder()
+                .commonName("Common Dolphin")
+                .scientificName("Delphinus delphis")
+                .conservationStatus(ConservationStatus.PROTECTED)
+                .project(project3)
+                .build();
 
-        // 3. Create Habitat (with embedded Location)
-        Location location1 = new Location("BEACH", "Mediterranean Sea", 39.5696, 2.6502); // Palma de Mallorca
-        Habitat habitat = Habitat.builder()
+        speciesRepository.saveAll(List.of(turtle, coral, dolphin));
+
+        // ------------------------
+        // 3. Crear hábitats
+        // ------------------------
+        Habitat habitat1 = Habitat.builder()
                 .name("Balearic Seagrass Beds")
-                .description("Posidonia oceanica meadows vital to marine biodiversity.")
-                .location(location1)
+                .description("Posidonia oceanica meadows vitales para la biodiversidad.")
+                .marineSpecies(turtle)
+                .location(new Location("BEACH", "Mediterranean Sea", 39.5696, 2.6502))
                 .build();
-        habitatRepository.save(habitat);
 
-        // 4. Create Volunteer
-        Volunteer volunteer = Volunteer.builder()
-                .nombre("Sofia")
-                .apellido("Martínez")
+        Habitat habitat2 = Habitat.builder()
+                .name("Caribbean Coral Reef")
+                .description("Arrecife de coral con alta biodiversidad.")
+                .marineSpecies(coral)
+                .location(new Location("REEF", "Caribbean Sea", 18.2208, -66.5901))
+                .build();
+
+        Habitat habitat3 = Habitat.builder()
+                .name("Atlantic Dolphin Bay")
+                .description("Zona de observación de delfines.")
+                .marineSpecies(dolphin)
+                .location(new Location("BAY", "Atlantic Ocean", 36.7783, -25.4244))
+                .build();
+
+        habitatRepository.saveAll(List.of(habitat1, habitat2, habitat3));
+
+        // ------------------------
+        // 4. Crear voluntarios
+        // ------------------------
+        Volunteer v1 = Volunteer.builder()
+                .name("Sofia Martinez")
                 .email("sofia.martinez@example.com")
+                .phone("+34-600-123-456")
+                .vNumber("VOL-001")
+                .dateCertification(today)
                 .build();
-        volunteerRepository.save(volunteer);
 
-        // 5. Create Conservation Event
-        ConservationEvent event = ConservationEvent.builder()
-                .name("Underwater Seagrass Monitoring")
-                .description("Diving event to monitor the health of Posidonia oceanica habitats.")
-                .startDateTime(LocalDateTime.of(2025, 8, 15, 10, 0))
-                .endDateTime(LocalDateTime.of(2025, 8, 15, 13, 0))
-                .location(Location.builder()
-                        .latitude(39.1456)
-                        .longitude(2.9833)
-                        .build())
-                .maxVolunteers(12)
-                .project(project)
+        Volunteer v2 = Volunteer.builder()
+                .name("Carlos Lopez")
+                .email("carlos.lopez@example.com")
+                .phone("+34-600-654-321")
+                .vNumber("VOL-002")
+                .dateCertification(today)
                 .build();
-        eventRepository.save(event);
 
-        System.out.println("✅ Demo data loaded successfully.");
+        Volunteer v3 = Volunteer.builder()
+                .name("Ana Torres")
+                .email("ana.torres@example.com")
+                .phone("+34-601-111-222")
+                .vNumber("VOL-003")
+                .dateCertification(today)
+                .build();
+
+        Volunteer v4 = Volunteer.builder()
+                .name("Miguel Fernandez")
+                .email("miguel.fernandez@example.com")
+                .phone("+34-602-333-444")
+                .vNumber("VOL-004")
+                .dateCertification(today)
+                .build();
+
+        Volunteer v5 = Volunteer.builder()
+                .name("Lucia Gomez")
+                .email("lucia.gomez@example.com")
+                .phone("+34-603-555-666")
+                .vNumber("VOL-005")
+                .dateCertification(today)
+                .build();
+
+        Volunteer v6 = Volunteer.builder()
+                .name("Javier Ruiz")
+                .email("javier.ruiz@example.com")
+                .phone("+34-604-777-888")
+                .vNumber("VOL-006")
+                .dateCertification(today)
+                .build();
+
+        volunteerRepository.saveAll(List.of(v1, v2, v3, v4, v5, v6));
+
+        // ------------------------
+        // 5. Link voluntarios a proyectos
+        // ------------------------
+        project1.getVolunteers().add(v1);
+        project1.getVolunteers().add(v2);
+        v1.getProjects().add(project1);
+        v2.getProjects().add(project1);
+
+        project2.getVolunteers().add(v3);
+        project2.getVolunteers().add(v4);
+        v3.getProjects().add(project2);
+        v4.getProjects().add(project2);
+
+        project3.getVolunteers().add(v5);
+        project3.getVolunteers().add(v6);
+        v5.getProjects().add(project3);
+        v6.getProjects().add(project3);
+
+        projectRepository.saveAll(List.of(project1, project2, project3));
+        volunteerRepository.saveAll(List.of(v1, v2, v3, v4, v5, v6));
+
+        // ------------------------
+        // 6. Crear eventos y asignar voluntarios
+        // ------------------------
+        ConservationEvent e1 = ConservationEvent.builder()
+                .name("Turtle Nesting Monitoring")
+                .description("Monitoreo de nidos de tortugas en la playa.")
+                .startDateTime(LocalDateTime.of(today.getYear(), 10, 15, 8, 0))
+                .endDateTime(LocalDateTime.of(today.getYear(), 12, 15, 12, 0))
+                .location(new Location("BEACH", "Mediterranean Sea", 39.5696, 2.6502))
+                .maxVolunteers(5)
+                .project(project1)
+                .build();
+
+        ConservationEvent e2 = ConservationEvent.builder()
+                .name("Coral Cleaning")
+                .description("Limpieza y monitoreo de arrecifes de coral.")
+                .startDateTime(LocalDateTime.of(today.getYear(), 10, 10, 9, 0))
+                .endDateTime(LocalDateTime.of(today.getYear(), 12, 10, 13, 0))
+                .location(new Location("REEF", "Caribbean Sea", 18.2208, -66.5901))
+                .maxVolunteers(6)
+                .project(project2)
+                .build();
+
+        ConservationEvent e3 = ConservationEvent.builder()
+                .name("Dolphin Tracking")
+                .description("Observación de delfines en la bahía.")
+                .startDateTime(LocalDateTime.of(today.getYear(), 10, 20, 10, 0))
+                .endDateTime(LocalDateTime.of(today.getYear(), 12, 20, 14, 0))
+                .location(new Location("BAY", "Atlantic Ocean", 36.7783, -25.4244))
+                .maxVolunteers(4)
+                .project(project3)
+                .build();
+
+        eventRepository.saveAll(List.of(e1, e2, e3));
+
+        // Asignar voluntarios a eventos
+        e1.getVolunteers().add(v1);
+        e1.getVolunteers().add(v2);
+        v1.getEvents().add(e1);
+        v2.getEvents().add(e1);
+
+        e2.getVolunteers().add(v3);
+        e2.getVolunteers().add(v4);
+        v3.getEvents().add(e2);
+        v4.getEvents().add(e2);
+
+        e3.getVolunteers().add(v5);
+        e3.getVolunteers().add(v6);
+        v5.getEvents().add(e3);
+        v6.getEvents().add(e3);
+
+        volunteerRepository.saveAll(List.of(v1, v2, v3, v4, v5, v6));
+        eventRepository.saveAll(List.of(e1, e2, e3));
+
+        System.out.println("\n✅ Demo data cargada con múltiples proyectos, voluntarios y eventos correctamente.\n");
     }
 }

@@ -1,11 +1,9 @@
 package marine.conservation.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,6 +16,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 public class Volunteer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -32,11 +31,20 @@ public class Volunteer {
     private String phone;
 
     @Column(nullable = false, unique = true)
-    private String vNumber; // Volunteer Number
+    private String vNumber;
 
+    @Column(nullable = false)
+    private LocalDate dateCertification;
+
+    @Builder.Default
     @ManyToMany(mappedBy = "volunteers")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<ConservationEvent> events = new HashSet<>();
 
+    @Builder.Default
     @ManyToMany(mappedBy = "volunteers")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<ConservationProject> projects = new HashSet<>();
 }
