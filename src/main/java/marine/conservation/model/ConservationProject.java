@@ -11,7 +11,9 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "conservation_projects")
@@ -43,4 +45,12 @@ public class ConservationProject {
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ConservationEvent> events = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "project_volunteer",
+            joinColumns = @JoinColumn(name = "project_id"),
+            inverseJoinColumns = @JoinColumn(name = "volunteer_id")
+    )
+    private Set<Volunteer> volunteers = new HashSet<>();
 }

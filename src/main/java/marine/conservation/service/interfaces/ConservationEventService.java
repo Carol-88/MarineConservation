@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ConservationEventService {
 
-    ConservationEventResponseDTO createEvent(@Valid ConservationEventRequestDTO requestDTO);
+    ConservationEventResponseDTO createEvent(ConservationEventRequestDTO requestDTO);
 
     ConservationEventResponseDTO getEventById(Long id);
 
