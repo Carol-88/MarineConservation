@@ -1,5 +1,6 @@
 package marine.conservation.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,5 +27,6 @@ public class Habitat {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "specie_id", nullable = false)
+    @JsonIgnore
     private MarineSpecie marineSpecies;
 }

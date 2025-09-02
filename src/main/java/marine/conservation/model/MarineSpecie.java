@@ -1,5 +1,6 @@
 package marine.conservation.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import marine.conservation.enums.ConservationStatus;
@@ -30,6 +31,7 @@ public class MarineSpecie {
 
     @ManyToOne
     @JoinColumn(name = "project_id")
+    @JsonIgnore
     private ConservationProject project;
 }
 

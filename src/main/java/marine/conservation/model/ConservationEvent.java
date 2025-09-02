@@ -1,5 +1,6 @@
 package marine.conservation.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -37,6 +38,7 @@ public class ConservationEvent {
     private int maxVolunteers;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "project_id", nullable = false)
     private ConservationProject project;
 
@@ -49,5 +51,7 @@ public class ConservationEvent {
     )
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
+
     private Set<Volunteer> volunteers = new HashSet<>();
 }
