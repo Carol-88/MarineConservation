@@ -1,4 +1,4 @@
-package marine.conservation.config;
+package marine.conservation.util;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
