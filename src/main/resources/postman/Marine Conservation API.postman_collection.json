@@ -1,0 +1,570 @@
+{
+	"info": {
+		"_postman_id": "9038e8dc-89bf-4e7f-9adc-6d4a80823fbc",
+		"name": "Marine Conservation API",
+		"description": "Collection of all API endpoints for managing ConservationEvent, ConservationProject, Habitat, and MarineSpecie.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46767396",
+		"_collection_link": "https://ramix-1577078.postman.co/workspace/Ramix's-Workspace~ad1675c2-aee2-45e3-8581-51f24a8e87c7/collection/46767396-9038e8dc-89bf-4e7f-9adc-6d4a80823fbc?action=share&source=collection_link&creator=46767396"
+	},
+	"item": [
+		{
+			"name": "Conservation Events",
+			"item": [
+				{
+					"name": "Get All Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/events",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Event By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/events/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Beach Cleanup\",\n  \"description\": \"Cleaning up.\",\n  \"startDateTime\": \"2026-12-15T12:00:00\",\n  \"endDateTime\": \"2026-12-15T13:00:00\",\n  \"location\": {\n    \"type\": \"BEACH\",\n    \"region\": \"Atlantic Coast\",\n    \"latitude\": 36.8508,\n    \"longitude\": -76.2859\n  },\n  \"maxVolunteers\": 50,\n  \"projectId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Event",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Event Patch",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Beach Cleanup\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Conservation Projects",
+			"item": [
+				{
+					"name": "Get All Projects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/projects",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Project",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Save Dolphins\",\n  \"goal\": \"Protect dolphins from pollution\",\n  \"startDate\": \"2025-08-01\",\n  \"endDate\": \"2025-12-31\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/projects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Project By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/projects/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"projects",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Project",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Beach Cleanup\"\n}\n"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/projects/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"projects",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Project Patch",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"id\": 2,\n        \"name\": \"Coral Reef\",\n        \"description\": \"Protección de arrecifes de coral en el Caribe.\",\n        \"initDate\": \"2025-09-05\",\n        \"finalDate\": \"2027-09-03\",\n        \"events\": null\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/projects/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"projects",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Habitats",
+			"item": [
+				{
+					"name": "Get All Habitats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/habitats",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"habitats"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Habitat",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"name\": \"test\",\n        \"description\": \"Posidonia oceanica meadows vitales para la biodiversidad.\"\n    }"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/habitats",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"habitats"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Habitat By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/habitats/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"habitats",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Habitat Patch",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test\",\n    \"description\": \"Posidonia oceanica meadows vitales para la biodiversidad.\",\n    \"location\": {\n            \"type\": \"BEACH\",\n            \"region\": \"Mediterranean Sea\",\n            \"latitude\": 39.5696,\n            \"longitude\": 2.6502\n        },\n    \"marineSpeciesId\": null,\n    \"marineSpeciesName\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/habitats/4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"habitats",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Habitat",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test\",\n    \"description\": \"Posidonia oceanica meadows vitales para la biodiversidad.\",\n    \"location\": {\n            \"type\": \"BEACH\",\n            \"region\": \"Mediterranean Sea\",\n            \"latitude\": 39.5696,\n            \"longitude\": 2.6502\n        },\n    \"marineSpeciesId\": null,\n    \"marineSpeciesName\": null\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/habitats/4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"habitats",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Marine Species",
+			"item": [
+				{
+					"name": "Get All Species",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/species",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"species"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Specie",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"commonName\": \"test\",\n        \"scientificName\": \"Caretta caretta\",\n        \"conservationStatus\": \"ENDANGERED\"\n    }"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/species",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"species"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Specie By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/species/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"species",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Specie",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/species/4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"species",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Volunteeer",
+			"item": [
+				{
+					"name": "Get All Volunteers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/volunteers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"volunteers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Volunteer By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/volunteers/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"volunteers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Volunteer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Juan Perez\",\n    \"email\": \"juan.perez@example.com\",\n    \"phone\": \"+34123456789\",\n    \"vNumber\": \"V-12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/volunteers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"volunteers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Volunteeer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/volunteers/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"volunteers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Volunteer Patch",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\"name\": \"test\""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/volunteers/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"volunteers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "http://localhost:8080/api/",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "baseUrl",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
