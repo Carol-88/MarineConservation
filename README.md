@@ -63,13 +63,63 @@ Compile and execute unit tests using:
 
 ## Project Structure
 
-- `src/main/java/marine/conservation/ConservationApplication.java` — Spring Boot main entry point.[^2]
-- `src/main/java/marine/conservation/ConservationEvent.java` — Conservation event entity.[^4]
-- `src/main/java/marine/conservation/ConservationProject.java` — Conservation project entity.[^5]
-- `src/main/java/marine/conservation/Habitat.java` — Habitat entity.[^6]
-- `src/main/java/marine/conservation/MarineSpecie.java` — Marine species entity.[^7]
-- `src/main/resources/application.properties` — Configuration for database, JPA, and application settings.[^3]
-- `pom.xml` — Maven configuration and dependencies.[^1]
+```
+├───src
+│   ├───main
+│   │   └───java
+│   │       └───marine
+│   │           └───conservation
+│   │               ├───controller
+│   │               ├───dto
+│   │               │   ├───ConservationEvent
+│   │               │   ├───conservationProject
+│   │               │   ├───habitat
+│   │               │   ├───marineSpecie
+│   │               │   └───volunteer
+│   │               ├───enums
+│   │               ├───model
+│   │               ├───repository
+│   │               ├───service
+│   │               │   ├───impl
+│   │               │   └───interfaces
+│   │               └───util
+│   └───test
+│       └───java
+│           └───marine
+│               └───conservation
+│                   ├───controller
+│                   └───service
+│                       └───impl
+└───target
+    ├───classes
+    │   └───marine
+    │       └───conservation
+    │           ├───controller
+    │           ├───dto
+    │           │   ├───ConservationEvent
+    │           │   ├───conservationProject
+    │           │   ├───habitat
+    │           │   ├───marineSpecie
+    │           │   └───volunteer
+    │           ├───enums
+    │           ├───model
+    │           ├───repository
+    │           ├───service
+    │           │   ├───impl
+    │           │   └───interfaces
+    │           └───util
+    ├───generated-sources
+    │   └───annotations
+    ├───generated-test-sources
+    │   └───test-annotations
+    └───test-classes
+        └───marine
+            └───conservation
+                ├───controller
+                └───service
+                    └───impl
+
+```
 
 
 ## Configuration
