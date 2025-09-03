@@ -176,22 +176,6 @@ public class VolunteerController {
                                         .collect(Collectors.toList()))
                                 .build())
                         .collect(Collectors.toList()))
-                .events(volunteer.getEvents().stream()
-                        .map(e -> EventForVolunteerDTO.builder()
-                                .id(e.getId())
-                                .name(e.getName())
-                                .description(e.getDescription())
-                                .startDateTime(e.getStartDateTime())
-                                .endDateTime(e.getEndDateTime())
-                                .location(LocationDTO.builder()
-                                        .type(e.getLocation().getType())
-                                        .region(e.getLocation().getRegion())
-                                        .latitude(e.getLocation().getLatitude())
-                                        .longitude(e.getLocation().getLongitude())
-                                        .build())
-                                .maxVolunteers(e.getMaxVolunteers())
-                                .build())
-                        .collect(Collectors.toList()))
                 .build();
     }
 
