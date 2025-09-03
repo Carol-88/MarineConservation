@@ -36,7 +36,7 @@ public class ConservationEvent {
     private Location location;
 
     @Column(nullable = false)
-    private int maxVolunteers;
+    private Integer maxVolunteers;
 
     @ManyToOne
     @JoinColumn(name = "project_id", nullable = false)

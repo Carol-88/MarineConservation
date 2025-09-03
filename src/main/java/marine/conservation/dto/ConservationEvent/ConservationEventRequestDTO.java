@@ -17,6 +17,9 @@ public class ConservationEventRequestDTO {
     @Size(max = 25)
     private String name;
 
+    @NotNull(message = "Project ID is required")
+    private Long projectId;
+
     @NotBlank(message = "Description cannot be blank")
     @Size(max = 100)
     private String description;
@@ -30,9 +33,8 @@ public class ConservationEventRequestDTO {
     private LocalDateTime endDateTime;
 
     @NotNull(message = "Location is required")
-    @Valid
     private Location location;
 
     @Positive(message = "Maximum number of volunteers must be greater than 0")
-    private int maxVolunteers;
+    private Integer maxVolunteers;
 }

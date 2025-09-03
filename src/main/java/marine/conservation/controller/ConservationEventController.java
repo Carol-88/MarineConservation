@@ -35,7 +35,7 @@ public class ConservationEventController {
     })
     @PostMapping
     public ResponseEntity<ConservationEventResponseDTO> createEvent(
-            @Valid @RequestBody ConservationEventRequestDTO requestDTO) {
+            @RequestBody ConservationEventRequestDTO requestDTO) {
         ConservationEventResponseDTO response = eventService.createEvent(requestDTO);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }

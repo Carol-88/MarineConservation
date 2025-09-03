@@ -4,7 +4,9 @@ import marine.conservation.dto.ConservationEvent.ConservationEventRequestDTO;
 import marine.conservation.dto.ConservationEvent.ConservationEventResponseDTO;
 import marine.conservation.dto.ConservationEvent.ConservationEventUpdateDTO;
 import marine.conservation.model.ConservationEvent;
+import marine.conservation.model.ConservationProject;
 import marine.conservation.repository.ConservationEventRepository;
+import marine.conservation.repository.ConservationProjectRepository;
 import marine.conservation.service.interfaces.ConservationEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,9 +19,13 @@ public class ConservationEventServiceImpl implements ConservationEventService {
 
     @Autowired
     ConservationEventRepository eventRepository;
+    @Autowired
+    ConservationProjectRepository projectRepository;
 
     @Override
     public ConservationEventResponseDTO createEvent(ConservationEventRequestDTO requestDTO) {
+        ConservationProject projectRef = projectRepository.getReferenceById(requestDTO.getProjectId());
+
         ConservationEvent event = ConservationEvent.builder()
                 .name(requestDTO.getName())
                 .description(requestDTO.getDescription())
@@ -27,6 +33,7 @@ public class ConservationEventServiceImpl implements ConservationEventService {
                 .endDateTime(requestDTO.getEndDateTime())
                 .location(requestDTO.getLocation())
                 .maxVolunteers(requestDTO.getMaxVolunteers())
+                .project(projectRef)
                 .build();
 
         ConservationEvent saved = eventRepository.save(event);
