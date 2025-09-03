@@ -66,23 +66,25 @@ Compile and execute unit tests using:
 ```
 ├───src
 │   ├───main
-│   │   └───java
-│   │       └───marine
-│   │           └───conservation
-│   │               ├───controller
-│   │               ├───dto
-│   │               │   ├───ConservationEvent
-│   │               │   ├───conservationProject
-│   │               │   ├───habitat
-│   │               │   ├───marineSpecie
-│   │               │   └───volunteer
-│   │               ├───enums
-│   │               ├───model
-│   │               ├───repository
-│   │               ├───service
-│   │               │   ├───impl
-│   │               │   └───interfaces
-│   │               └───util
+│   │   ├───java
+│   │   │   └───marine
+│   │   │       └───conservation
+│   │   │           ├───controller
+│   │   │           ├───dto
+│   │   │           │   ├───ConservationEvent
+│   │   │           │   ├───conservationProject
+│   │   │           │   ├───habitat
+│   │   │           │   ├───marineSpecie
+│   │   │           │   └───volunteer
+│   │   │           │       └───auxiliary
+│   │   │           ├───enums
+│   │   │           ├───model
+│   │   │           ├───repository
+│   │   │           ├───service
+│   │   │           │   ├───impl
+│   │   │           │   └───interfaces
+│   │   │           └───util
+│   │   └───resources
 │   └───test
 │       └───java
 │           └───marine
@@ -90,34 +92,7 @@ Compile and execute unit tests using:
 │                   ├───controller
 │                   └───service
 │                       └───impl
-└───target
-    ├───classes
-    │   └───marine
-    │       └───conservation
-    │           ├───controller
-    │           ├───dto
-    │           │   ├───ConservationEvent
-    │           │   ├───conservationProject
-    │           │   ├───habitat
-    │           │   ├───marineSpecie
-    │           │   └───volunteer
-    │           ├───enums
-    │           ├───model
-    │           ├───repository
-    │           ├───service
-    │           │   ├───impl
-    │           │   └───interfaces
-    │           └───util
-    ├───generated-sources
-    │   └───annotations
-    ├───generated-test-sources
-    │   └───test-annotations
-    └───test-classes
-        └───marine
-            └───conservation
-                ├───controller
-                └───service
-                    └───impl
+
 
 ```
 
