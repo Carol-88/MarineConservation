@@ -1,6 +1,7 @@
 package marine.conservation.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.FutureOrPresent;
@@ -43,8 +44,7 @@ public class ConservationProject {
 
     @Builder.Default
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
-
+    @JsonManagedReference
     private List<ConservationEvent> events = new ArrayList<>();
 
     @Builder.Default
