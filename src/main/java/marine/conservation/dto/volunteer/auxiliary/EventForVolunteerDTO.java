@@ -1,4 +1,4 @@
-package marine.conservation.dto.volunteer.aux;
+package marine.conservation.dto.volunteer.auxiliary;
 
 
 import lombok.Builder;

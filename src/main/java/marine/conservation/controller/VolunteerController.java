@@ -1,9 +1,9 @@
 package marine.conservation.controller;
 
 import lombok.RequiredArgsConstructor;
-import marine.conservation.dto.volunteer.aux.EventForVolunteerDTO;
-import marine.conservation.dto.volunteer.aux.LocationDTO;
-import marine.conservation.dto.volunteer.aux.ProjectForVolunteerDTO;
+import marine.conservation.dto.volunteer.auxiliary.EventForVolunteerDTO;
+import marine.conservation.dto.volunteer.auxiliary.LocationDTO;
+import marine.conservation.dto.volunteer.auxiliary.ProjectForVolunteerDTO;
 import marine.conservation.dto.volunteer.VolunteerRequestDTO;
 import marine.conservation.dto.volunteer.VolunteerResponseDTO;
 import marine.conservation.dto.volunteer.VolunteerUpdateDTO;

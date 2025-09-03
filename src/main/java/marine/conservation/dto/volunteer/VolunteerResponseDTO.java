@@ -1,8 +1,8 @@
 package marine.conservation.dto.volunteer;
 
 import lombok.*;
-import marine.conservation.dto.volunteer.aux.EventForVolunteerDTO;
-import marine.conservation.dto.volunteer.aux.ProjectForVolunteerDTO;
+import marine.conservation.dto.volunteer.auxiliary.EventForVolunteerDTO;
+import marine.conservation.dto.volunteer.auxiliary.ProjectForVolunteerDTO;
 import marine.conservation.model.CertifiedVolunteer;
 
 import java.util.List;
