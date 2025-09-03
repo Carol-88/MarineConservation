@@ -1,5 +1,6 @@
 package marine.conservation.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -41,13 +42,13 @@ public class Volunteer {
     @ManyToMany(mappedBy = "volunteers")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @JsonIgnore
+    @JsonBackReference
     private Set<ConservationEvent> events = new HashSet<>();
 
     @Builder.Default
     @ManyToMany(mappedBy = "volunteers")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @JsonIgnore
+    @JsonBackReference
     private Set<ConservationProject> projects = new HashSet<>();
 }
