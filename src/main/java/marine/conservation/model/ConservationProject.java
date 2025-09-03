@@ -1,6 +1,5 @@
 package marine.conservation.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Future;
@@ -56,6 +55,6 @@ public class ConservationProject {
             joinColumns = @JoinColumn(name = "project_id"),
             inverseJoinColumns = @JoinColumn(name = "volunteer_id")
     )
-    @JsonIgnore
+    @JsonManagedReference
     private Set<Volunteer> volunteers = new HashSet<>();
 }

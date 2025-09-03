@@ -1,7 +1,7 @@
 package marine.conservation.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -52,6 +52,6 @@ public class ConservationEvent {
     )
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @JsonIgnore
+    @JsonManagedReference
     private Set<Volunteer> volunteers = new HashSet<>();
 }
