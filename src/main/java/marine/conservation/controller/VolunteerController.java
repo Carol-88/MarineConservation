@@ -70,7 +70,6 @@ public class VolunteerController {
                 .email(dto.getEmail())
                 .phone(dto.getPhone())
                 .vNumber(dto.getVNumber())
-                .dateCertification(dto.getCertificate().getDateCertification())
                 .build();
 
         Volunteer saved = volunteerRepository.save(volunteer);
@@ -93,7 +92,6 @@ public class VolunteerController {
                     existing.setEmail(dto.getEmail());
                     existing.setPhone(dto.getPhone());
                     existing.setVNumber(dto.getVNumber());
-                    existing.setDateCertification(dto.getCertificate().getDateCertification());
                     Volunteer saved = volunteerRepository.save(existing);
                     return ResponseEntity.ok(toResponseDTO(saved));
                 })
@@ -116,9 +114,6 @@ public class VolunteerController {
                     if (dto.getEmail() != null) existing.setEmail(dto.getEmail());
                     if (dto.getPhone() != null) existing.setPhone(dto.getPhone());
                     if (dto.getVNumber() != null) existing.setVNumber(dto.getVNumber());
-                    if (dto.getCertificate() != null) {
-                        existing.setDateCertification(dto.getCertificate().getDateCertification());
-                    }
                     Volunteer saved = volunteerRepository.save(existing);
                     return ResponseEntity.ok(toResponseDTO(saved));
                 })

@@ -25,8 +25,8 @@ public class Habitat {
     @Embedded
     private Location location;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "specie_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "specie_id")
     @JsonIgnore
     private MarineSpecie marineSpecies;
 }

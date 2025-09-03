@@ -114,7 +114,6 @@ public class DataInitializer implements CommandLineRunner {
                 .email("sofia.martinez@example.com")
                 .phone("+34-600-123-456")
                 .vNumber("VOL-001")
-                .dateCertification(today)
                 .build();
 
         Volunteer v2 = Volunteer.builder()
@@ -122,7 +121,6 @@ public class DataInitializer implements CommandLineRunner {
                 .email("carlos.lopez@example.com")
                 .phone("+34-600-654-321")
                 .vNumber("VOL-002")
-                .dateCertification(today)
                 .build();
 
         Volunteer v3 = Volunteer.builder()
@@ -130,7 +128,6 @@ public class DataInitializer implements CommandLineRunner {
                 .email("ana.torres@example.com")
                 .phone("+34-601-111-222")
                 .vNumber("VOL-003")
-                .dateCertification(today)
                 .build();
 
         Volunteer v4 = Volunteer.builder()
@@ -138,7 +135,6 @@ public class DataInitializer implements CommandLineRunner {
                 .email("miguel.fernandez@example.com")
                 .phone("+34-602-333-444")
                 .vNumber("VOL-004")
-                .dateCertification(today)
                 .build();
 
         Volunteer v5 = Volunteer.builder()
@@ -146,7 +142,6 @@ public class DataInitializer implements CommandLineRunner {
                 .email("lucia.gomez@example.com")
                 .phone("+34-603-555-666")
                 .vNumber("VOL-005")
-                .dateCertification(today)
                 .build();
 
         Volunteer v6 = Volunteer.builder()
@@ -154,7 +149,6 @@ public class DataInitializer implements CommandLineRunner {
                 .email("javier.ruiz@example.com")
                 .phone("+34-604-777-888")
                 .vNumber("VOL-006")
-                .dateCertification(today)
                 .build();
 
         volunteerRepository.saveAll(List.of(v1, v2, v3, v4, v5, v6));

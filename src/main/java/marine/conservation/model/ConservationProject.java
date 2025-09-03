@@ -47,14 +47,14 @@ public class ConservationProject {
     private List<ConservationEvent> events = new ArrayList<>();
 
     @Builder.Default
-    @ManyToMany
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinTable(
             name = "project_volunteer",
             joinColumns = @JoinColumn(name = "project_id"),
             inverseJoinColumns = @JoinColumn(name = "volunteer_id")
     )
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @JsonManagedReference
     private Set<Volunteer> volunteers = new HashSet<>();
 }

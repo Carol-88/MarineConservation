@@ -1,11 +1,9 @@
 package marine.conservation.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,9 +33,6 @@ public class Volunteer {
     @Column(nullable = false, unique = true)
     private String vNumber;
 
-    @Column(nullable = false)
-    private LocalDate dateCertification;
-
     @Builder.Default
     @ManyToMany(mappedBy = "volunteers")
     @ToString.Exclude
@@ -51,4 +46,19 @@ public class Volunteer {
     @EqualsAndHashCode.Exclude
     @JsonBackReference
     private Set<ConservationProject> projects = new HashSet<>();
+
+    // ----------------- 🔹 PreRemove Callback -----------------
+    @PreRemove
+    private void removeVolunteerFromAssociations() {
+
+        for (ConservationProject project : projects) {
+            project.getVolunteers().remove(this);
+        }
+        projects.clear();
+
+        for (ConservationEvent event : events) {
+            event.getVolunteers().remove(this);
+        }
+        events.clear();
+    }
 }

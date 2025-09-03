@@ -71,6 +71,36 @@ public class HabitatController {
         return ResponseEntity.ok(habitats);
     }
 
+    // ------------------- Update (PATCH) -------------------
+    @Operation(summary = "Partially update a habitat (PATCH)",
+            description = "Updates only the provided fields of a habitat.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Habitat updated successfully"),
+            @ApiResponse(responseCode = "404", description = "Habitat not found")
+    })
+    @PatchMapping("/{id}")
+    public ResponseEntity<HabitatResponseDTO> updatePatch(
+            @PathVariable Long id,
+            @RequestBody HabitatRequestDTO dto) {
+
+        Habitat habitat = habitatService.findById(id);
+        if (habitat == null) {
+            return ResponseEntity.notFound().build();
+        }
+        if (dto.getName() != null) {
+            habitat.setName(dto.getName());
+        }
+        if (dto.getDescription() != null) {
+            habitat.setDescription(dto.getDescription());
+        }
+        if (dto.getLocation() != null) {
+            habitat.setLocation(dto.getLocation());
+        }
+
+        Habitat updated = habitatService.save(habitat);
+        return ResponseEntity.ok(toResponseDTO(updated));
+    }
+
     // ------------------- Delete -------------------
     @Operation(summary = "Delete a habitat",
             description = "Removes a habitat by its ID.")

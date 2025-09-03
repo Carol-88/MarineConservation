@@ -1,10 +1,13 @@
 package marine.conservation.service.impl;
 
+import jakarta.transaction.Transactional;
 import marine.conservation.dto.conservationProject.ConservationProjectRequestDTO;
 import marine.conservation.dto.conservationProject.ConservationProjectResponseDTO;
 import marine.conservation.dto.conservationProject.ConservationProjectUpdateDTO;
 import marine.conservation.model.ConservationProject;
+import marine.conservation.model.MarineSpecie;
 import marine.conservation.repository.ConservationProjectRepository;
+import marine.conservation.repository.MarineSpecieRepository;
 import marine.conservation.service.interfaces.ConservationProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +20,9 @@ import java.util.stream.Collectors;
 public class ConservationProjectServiceImpl implements ConservationProjectService {
     @Autowired
     ConservationProjectRepository conservationProjectRepository;
+
+    @Autowired
+    private MarineSpecieRepository marineSpecieRepository;
 
     @Override
     public ConservationProjectResponseDTO createProject(ConservationProjectRequestDTO projectRequestDTO) {
@@ -81,11 +87,16 @@ public class ConservationProjectServiceImpl implements ConservationProjectServic
     }
 
     @Override
+    @Transactional
     public void deleteProject(Long id) {
         ConservationProject project = conservationProjectRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Project not found with id: " + id));
-        conservationProjectRepository.delete(project);
 
+        List<MarineSpecie> speciesList = marineSpecieRepository.findByProject(project);
+        speciesList.forEach(species -> species.setProject(null));
+        marineSpecieRepository.saveAll(speciesList);
+
+        conservationProjectRepository.delete(project);
     }
 
     private ConservationProjectResponseDTO mapToResponseDTO(ConservationProject project) {

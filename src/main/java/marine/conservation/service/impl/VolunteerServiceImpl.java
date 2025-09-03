@@ -1,9 +1,14 @@
 package marine.conservation.service.impl;
 
+import jakarta.transaction.Transactional;
 import marine.conservation.dto.volunteer.VolunteerRequestDTO;
 import marine.conservation.dto.volunteer.VolunteerResponseDTO;
 import marine.conservation.dto.volunteer.VolunteerUpdateDTO;
+import marine.conservation.model.ConservationEvent;
+import marine.conservation.model.ConservationProject;
 import marine.conservation.model.Volunteer;
+import marine.conservation.repository.ConservationEventRepository;
+import marine.conservation.repository.ConservationProjectRepository;
 import marine.conservation.repository.VolunteerRepository;
 import marine.conservation.service.interfaces.VolunteerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +21,13 @@ import java.util.stream.Collectors;
 public class VolunteerServiceImpl implements VolunteerService {
 
     @Autowired
-    VolunteerRepository volunteerRepository;
+    private VolunteerRepository volunteerRepository;
+
+    @Autowired
+    private ConservationProjectRepository projectRepository;
+
+    @Autowired
+    private ConservationEventRepository eventRepository;
 
     @Override
     public VolunteerResponseDTO createVolunteer(VolunteerRequestDTO requestDTO) {
@@ -82,10 +93,12 @@ public class VolunteerServiceImpl implements VolunteerService {
         return mapToResponseDTO(updated);
     }
 
+    @Transactional
     @Override
     public void deleteVolunteer(Long id) {
         Volunteer volunteer = volunteerRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Volunteer not found with id: " + id));
+
         volunteerRepository.delete(volunteer);
     }
 
@@ -100,5 +113,4 @@ public class VolunteerServiceImpl implements VolunteerService {
                 .vNumber(volunteer.getVNumber())
                 .build();
     }
-
 }
