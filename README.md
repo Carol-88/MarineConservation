@@ -9,7 +9,7 @@ Marine Conservation is a web-based system designed to manage data on conservatio
 - **MySQL** database integration, supporting automatic creation if the database does not exist.[^3]
 - **JPA/Hibernate** for ORM and schema generation.[^3]
 - Management of marine species, habitats, conservation projects, and events with extensible domain models.[^5][^6][^7][^4]
-
+- Swagger Link: http://localhost:8080/swagger-ui/
 
 ## Getting Started
 
