@@ -103,6 +103,10 @@ Compile and execute unit tests using:
 - **Database**: Configurable in `application.properties`; defaults to `root` user and `ironhack` password.[^3]
 - **JPA**: Schema is generated on application start (`create-drop`), showing SQL queries for debugging.[^3]
 
+## Project Presentation
+
+[Presentation](https://www.canva.com/design/DAGx1ClEReg/4BTSZuQdZhjDG9Yw-ZwNDg/edit?utm_content=DAGx1ClEReg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
 
 ## License
 
@@ -131,9 +135,3 @@ Licensed under the Apache License, Version 2.0.[^9][^8]
 [^9]: mvnw.cmd
 
 [^10]: ConservationApplicationTests.java
-
-## Project Presentation
-
-[Presentation](https://www.canva.com/design/DAGx1ClEReg/4BTSZuQdZhjDG9Yw-ZwNDg/edit?utm_content=DAGx1ClEReg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
-
-
